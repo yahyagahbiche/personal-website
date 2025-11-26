@@ -1,0 +1,397 @@
+/* =========================================
+   1. CSS VARIABLES & THEMING ENGINE
+   ========================================= */
+   :root {
+    /* --- Layout Variables --- */
+    --radius: 12px;
+    --transition: all 0.3s ease;
+    
+    /* --- Light Mode Colors (Default) --- */
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --section-bg: #f1f5f9;  /* Light gray for sections */
+    --card-bg: #ffffff;
+    --border: #cbd5e1;
+    --accent: #3b82f6;      /* Standard Blue */
+    --muted: #64748b;
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  
+    /* --- Toggle Switch Colors --- */
+    --toggle-bg: #cbd5e1;
+    --toggle-circle: #ffffff;
+  }
+  
+  /* --- Dark Mode Overrides --- */
+  body.dark-mode {
+    --bg: #0f172a;          /* Deep Blue/Black Main BG */
+    --text: #e2e8f0;        /* Light Gray Text */
+    --section-bg: #1e293b;  /* Dark Slate for "Light" sections */
+    --card-bg: #1e293b;     /* Cards match the section darkness */
+    --border: #334155;      /* Darker borders */
+    --accent: #60a5fa;      /* Brighter Blue Accent */
+    --muted: #94a3b8;
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  
+    /* --- Toggle Switch Active Colors --- */
+    --toggle-bg: #3b82f6;   /* Blue when active */
+  }
+  
+  /* =========================================
+     2. GLOBAL RESETS & BASE STYLES
+     ========================================= */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .bg-light {
+    /* Use the strong 'background' shorthand property to ensure it overwrites the original rule */
+    background: var(--section-bg);
+    transition: var(--transition);
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* =========================================
+     3. GEMINI GRADIENT TEXT
+     ========================================= */
+  .gemini-text {
+    background: linear-gradient(74deg, #4285F4 0%, #9B72CB 50%, #D96570 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 800;
+  }
+  
+  /* =========================================
+     4. NAVBAR & HEADER
+     ========================================= */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--card-bg); /* Use card-bg so it adapts */
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .navbar {
+    background: transparent;
+    box-shadow: none; /* Shadow handled by header */
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 15px;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    font-weight: 600;
+    color: var(--text);
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  
+  /* Mobile Menu Toggle */
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-toggle { display: block; }
+  
+    .nav-links {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: var(--card-bg);
+      flex-direction: column;
+      width: 100%;
+      display: none;
+      text-align: center;
+      box-shadow: var(--shadow);
+      padding-bottom: 1rem;
+    }
+  
+    .nav-links.show { display: flex; }
+  }
+  
+  /* =========================================
+     5. IPHONE STYLE TOGGLE WIDGET
+     ========================================= */
+  .toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg); /* Matches background */
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+  
+  /* Ensure toggle doesn't shrink in flexbox */
+  .toggle-wrapper { flex-shrink: 0; }
+  
+  .toggle-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 44px; /* Slightly smaller for navbar */
+    height: 24px;
+  }
+  
+  .switch input { opacity: 0; width: 0; height: 0; }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--toggle-bg);
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--toggle-circle);
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  input:checked + .slider { background-color: var(--toggle-bg); }
+  input:checked + .slider:before { transform: translateX(20px); }
+  
+  /* =========================================
+     6. SECTIONS & HERO
+     ========================================= */
+  .section { padding: 5rem 0; }
+  .section-title { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+  .section-subtitle { color: var(--muted); text-align: center; margin-bottom: 1.5rem; }
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 0 5rem; /* Extra top padding for fixed header */
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .hero-text { flex: 1; }
+  .hero-text h2 span { color: var(--accent); }
+  .hero-text h3 { color: var(--muted); margin: 0.5rem 0; }
+  .hero-text p { color: var(--text); margin-bottom: 1rem; }
+  
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    display: inline-block;
+    margin-top: 1rem;
+    transition: var(--transition);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  
+  .hero-img img {
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border: 4px solid var(--card-bg);
+    box-shadow: var(--shadow);
+  }
+  
+  /* =========================================
+     7. SKILLS & PROJECTS
+     ========================================= */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .skill {
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    color: var(--text);
+    transition: var(--transition);
+  }
+  .skill:hover { transform: translateY(-5px); }
+  
+  .skill i { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+  .html5 { color: #e34f26; }
+  .css3 { color: #1572b6; }
+  .js { color: #f7df1e; }
+  .react { color: #61dafb; }
+  .node { color: #68a063; }
+  .github { color: var(--text); } /* GitHub icon adapts to text color */
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .project-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: block; /* Fix flex layout issue */
+  }
+  
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    padding: 1rem;
+    background: var(--section-bg); /* Slight contrast for image background */
+  }
+  
+  .project-info { padding: 1.5rem; }
+  .project-info h3 { color: var(--accent); margin-bottom: 0.5rem; }
+  .project-links { display: flex; gap: 1rem; margin-top: 1rem; }
+  .project-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  
+  /* =========================================
+     8. MAP (DARK MODE FIX)
+     ========================================= */
+  #map {
+    height: 500px;
+    width: 100%;
+    border-radius: 12px;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+    z-index: 1; /* Keep below header */
+  }
+  
+  /* THE MAP MAGIC: 
+     Inverts the colors of the map tiles when body has .dark-mode.
+     Hue-rotate spins the colors so blue water doesn't turn orange.
+  */
+  body.dark-mode .leaflet-tile-pane {
+      filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+  }
+  
+  /* Ensure tooltips and markers don't get messed up */
+  body.dark-mode .leaflet-popup-content-wrapper,
+  body.dark-mode .leaflet-popup-tip {
+      background-color: var(--card-bg);
+      color: var(--text);
+  }
+  
+  /* =========================================
+     9. CONTACT & FOOTER
+     ========================================= */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto 0;
+  }
+  
+  input, textarea {
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--card-bg); /* Adapts to dark mode */
+    color: var(--text);
+    font-family: inherit;
+  }
+  
+  textarea { resize: vertical; height: 150px; }
+  
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .socials {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .socials a { color: var(--accent); font-size: 1.3rem; transition: var(--transition); }
+  .socials a:hover { color: #2563eb; }
+  
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .fade-in.show { opacity: 1; transform: translateY(0); }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yahya Gahbiche | Software Engineer Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet Map Library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" >
+</head>
+<header class="header">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container nav-container">
+        <h1 class="gemini-text">Yahya<span>.</span></h1>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="toggle-wrapper">
+          <span class="toggle-label" id="toggleLabel">Light</span>
+          <label class="switch">
+            <input type="checkbox" id="themeCheckbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+      </div>
+    </nav>
+</header>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Hi, I’m <span class="gemini-text">Yahya Gahbiche</span></h2>
+        <br>
+        <h3>A Front-End Software Engineer</h3>
+        <p>I'm passionate about building fast, intuitive, and user-centered web experiences.
+          I’ve spent the last four years at Amazon working on A/B testing infrastructure, experiment analysis, and customer-facing UI logic, where I developed a strong understanding of how real users interact with products at scale.
+          My goal is to create products that feel effortless to use, whether it’s a polished personal project, a thoughtful front-end experiment, or a full end-to-end web app.</p>
+        <a href="#projects" class="btn-primary">View My Work</a>
+      </div>
+      <div class="hero-img">
+        <div class="portrait-container">
+          <img src="/images/yahya-gahbiche-portrait.jpeg" alt="Yahya portrait" class="portrait"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section fade-in">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="/images/umbrella icon.png" alt="Weather App" class="project-img">
+          <div class="project-info">
+            <h3>Weather App (Swift)</h3>
+            <p>Displays live weather data based on user location. Built with Swift and OpenWeather API.</p>
+            <div class="project-links">
+              <a href="/weather-app-demo.mov"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="#"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="project-card">
+          <img src="/images/Todo list icon.png" alt="To-Do List" class="project-img">
+          <div class="project-info">
+            <h3>To-Do List App (Swift)</h3>
+            <p>Lightweight task management app with persistent storage and responsive UI.</p>
+            <div class="project-links">
+              <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/yahyagahbiche/ToDoApp"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="/images/taysir icon.png" alt="React web app" class="project-img">
+          <div class="project-info">
+            <h3>(React web app)</h3>
+            <p>My ongoing React-based web application with Hooks, State and animations.</p>
+            <div class="project-links">
+              <a href="#"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Remote Work Map Section -->
+<section id="world-map" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Cities I Worked From 🌍</h2>
+      <p class="section-subtitle">
+        I’ve had the privilege to work remotely from amazing places around the world. 
+        Click the markers to see where!
+      </p>
+      <div id="map"></div>
+    </div>
+  </section>
+  
+
+  <!-- About Section -->
+  <section id="about" class="section fade-in">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p>I’m a front-end engineer with experience in A/B testing, UI optimization, and scalable design systems. At Amazon, I design experiments that improve customer experiences across global markets. My mission is to blend data-driven design with elegant interfaces.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section bg-light fade-in">
+    <div class="container">
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill"><i class="fab fa-html5 html5"></i> HTML</div>
+        <div class="skill"><i class="fab fa-css3-alt css3"></i> CSS</div>
+        <div class="skill"><i class="fab fa-js-square js"></i> JavaScript</div>
+        <div class="skill"><i class="fab fa-react react"></i> React</div>
+        <div class="skill"><i class="fab fa-node-js node"></i> Node.js</div>
+        <div class="skill"><i class="fab fa-github github"></i> GitHub</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Contact -->
+  <section id="contact" class="section bg-light fade-in">
+    <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p>If you'd like to discuss a project or collaboration, feel free to send a message!</p>
+        <form class="contact-form" method="POST" action="https://formspree.io/f/xdkvbvnj">
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="text" name="subject" placeholder="Subject" required />
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Yahya Gahbiche | Built using HTML, CSS, and JS</p>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/yahyagahbiche"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
