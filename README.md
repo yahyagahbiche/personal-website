@@ -57,7 +57,7 @@ You can view the live website here:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yahyagahbiche/portfolio-website.git
+git clone https://github.com/yahyagahbiche/personal-website.git
 
 ```
 2. Open index.html in your preferred browser.
