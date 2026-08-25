@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yahyagahbiche.github.io/personal-website/sitemap.xml
