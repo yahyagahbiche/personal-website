@@ -1,54 +1,44 @@
 # Yahya Gahbiche | Front-End Software Engineer Portfolio
 
-Welcome to my personal portfolio website! This website showcases my skills, projects, and experience as a front-end software engineer. It demonstrates modern web development practices, including responsive design, dark mode, animations, and interactive maps.
+Personal portfolio site built with React, Vite, and plain CSS.
 
 ---
 
 ## 🌟 Features
 
-- **Dark Mode Toggle** – Switch between light and dark themes with smooth transitions. Your preference is saved with Local Storage.
-- **Responsive Mobile Menu** – Hamburger menu for mobile devices with smooth toggle animations.
-- **Smooth Scroll Navigation** – Click navigation links to smoothly scroll to sections of the page.
-- **Fade-In Animations** – Sections and elements animate into view as you scroll.
-- **Projects Showcase** – Highlighting live demos and GitHub repositories.
-- **World Map Section** – Interactive Leaflet map with markers showing cities I have worked from.
+- **Dark Mode Toggle** – Switch between light and dark themes, preference saved to Local Storage.
+- **Component-based sections** – Hero, Journey, Why, Now, About, and Contact, each its own React component.
 - **Contact Form** – Users can send messages via Formspree integration.
-- **Modern Design** – Uses CSS variables, gradient text, and a polished aesthetic.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** HTML5, CSS3, JavaScript (Vanilla JS)
-- **Animations:** Intersection Observer API, CSS transitions
-- **Map:** Leaflet.js, OpenStreetMap
-- **Icons & Fonts:** Font Awesome, Google Fonts (Inter)
-- **Hosting:** Can be deployed on GitHub Pages, Netlify, or Vercel
+- **Frontend:** React 19, Vite
+- **Styling:** Plain CSS with CSS variables (light/dark theming)
+- **Fonts:** Fraunces, Public Sans (Google Fonts)
+- **Hosting:** GitHub Pages, deployed automatically via GitHub Actions
 
 ---
 
 ## 📂 Project Structure
-/images               # Portraits, project screenshots, and icons
-style.css             # Main stylesheet with light & dark theme support
-script.js             # JavaScript logic for dark mode, menu, scroll, animations, map
-index.html            # Main portfolio page
-README.md             # Project description
 
+```
+public/                 # Static assets (favicon, portrait image)
+src/
+  components/           # Header, Hero, Journey, Why, Now, About, Contact, Footer
+  hooks/useTheme.js      # Dark/light theme hook
+  App.jsx               # Top-level layout
+  main.jsx              # React entry point
+index.html              # Vite entry HTML
+vite.config.js          # Vite config (GitHub Pages base path)
+```
 
 ---
 
 ## 🖥️ Live Demo
 
-You can view the live website here:  
-[https://yourwebsite.com](https://yourwebsite.com) *(replace with your actual URL)*
-
----
-
-## 🔗 Projects Included
-
-1. **Weather App (Swift)** – Live weather data with OpenWeather API  
-2. **To-Do List App (Swift)** – Task management with persistent storage  
-3. **React Web App (Ongoing)** – A React-based app with hooks, state, and animations  
+[https://yahyagahbiche.github.io/personal-website/](https://yahyagahbiche.github.io/personal-website/)
 
 ---
 
@@ -58,19 +48,28 @@ You can view the live website here:
 
 ```bash
 git clone https://github.com/yahyagahbiche/personal-website.git
-
 ```
-2. Open index.html in your preferred browser.
 
-3. Customize content, projects, or styles as needed.
+2. Install dependencies and start the dev server:
+
+```bash
+npm install
+npm run dev
+```
+
+3. Build for production:
+
+```bash
+npm run build
+```
+
+Pushing to `main` automatically builds and deploys to GitHub Pages via the workflow in `.github/workflows/deploy.yml`.
 
 ---
 
 ## 💡 Notes
 
 Dark mode preferences are saved to Local Storage.
-
-Map markers can be clicked to see the names of cities I worked from.
 
 Contact form uses Formspree for backend-less form submission.
 
@@ -80,7 +79,6 @@ Contact form uses Formspree for backend-less form submission.
 
 Feel free to reach out via:
 
-LinkedIn: linkedin.com/in/yahyagahbiche
+LinkedIn: [linkedin.com/in/yahyagahbiche](https://www.linkedin.com/in/yahyagahbiche)
 
-GitHub: github.com/yahyagahbiche
-
+GitHub: [github.com/yahyagahbiche](https://github.com/yahyagahbiche)
