@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 import { posts } from "../lib/posts";
 
 export default function Blog() {
+  if (posts.length === 0) {
+    return (
+      <section className="section">
+        <div className="wrap">
+          <p className="section-label">Blog</p>
+          <p className="prose-note">Coming soon.</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="section">
       <div className="wrap">
