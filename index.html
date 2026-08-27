@@ -47,6 +47,18 @@
     </script>
   </head>
   <body>
+    <script>
+      // Restores the path that 404.html encoded into ?redirect=... before
+      // React Router mounts, so a hard refresh or shared link to a deep
+      // route (e.g. /blog/some-post) lands on the right page.
+      (function () {
+        var redirect = new URLSearchParams(window.location.search).get("redirect");
+        if (redirect) {
+          var base = window.location.pathname.replace(/\/$/, "");
+          window.history.replaceState(null, "", base + "/" + redirect);
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

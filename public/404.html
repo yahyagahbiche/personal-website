@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yahya Gahbiche</title>
+    <script>
+      // GitHub Pages has no server-side routing, so any deep link (e.g.
+      // /personal-website/blog/some-post) 404s here instead of reaching
+      // index.html. This encodes the intended path into a query string and
+      // redirects to index.html, which restores it via history.replaceState
+      // (see the matching script in index.html) so React Router can take over.
+      var pathSegmentsToKeep = 1; // keeps "/personal-website"
+      var l = window.location;
+      var redirect =
+        l.protocol +
+        "//" +
+        l.hostname +
+        (l.port ? ":" + l.port : "") +
+        l.pathname
+          .split("/")
+          .slice(0, 1 + pathSegmentsToKeep)
+          .join("/") +
+        "/?redirect=" +
+        encodeURIComponent(
+          l.pathname
+            .split("/")
+            .slice(1 + pathSegmentsToKeep)
+            .join("/") +
+            l.search +
+            l.hash
+        );
+      window.location.replace(redirect);
+    </script>
+  </head>
+  <body></body>
+</html>

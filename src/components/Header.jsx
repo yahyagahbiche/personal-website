@@ -1,15 +1,19 @@
+import { Link } from "react-router-dom";
+
 export default function Header({ theme, onToggleTheme }) {
   return (
     <header className="site-header">
       <div className="wrap header-row">
-        <a href="#top" className="wordmark">
+        <Link to="/#top" className="wordmark">
           Yahya Gahbiche
-        </a>
+        </Link>
         <nav className="nav">
-          <a href="#journey">Journey</a>
-          <a href="#now">Now</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <Link to="/#journey">Journey</Link>
+          <Link to="/#now">Now</Link>
+          <Link to="/#about">About</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/gallery">Gallery</Link>
+          <Link to="/#contact">Contact</Link>
         </nav>
         <button
           type="button"
